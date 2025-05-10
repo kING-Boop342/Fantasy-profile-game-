@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fantasy Profile Maker</title>
+  <style>
+    body {
+      background: url('https://images.unsplash.com/photo-1580136571944-b1c7d1f3f896') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Georgia', serif;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 15px;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    input, select, button {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 10px;
+      border: none;
+      font-size: 16px;
+    }
+    .profile-card {
+      margin-top: 20px;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Create Your Fantasy Profile</h1>
+    <input type="text" id="name" placeholder="Fantasy Name">
+    <select id="race">
+      <option>Elf</option>
+      <option>Dwarf</option>
+      <option>Human</option>
+      <option>Orc</option>
+      <option>Dragonborn</option>
+    </select>
+    <select id="class">
+      <option>Wizard</option>
+      <option>Warrior</option>
+      <option>Rogue</option>
+      <option>Cleric</option>
+      <option>Ranger</option>
+    </select>
+    <select id="alignment">
+      <option>Lawful Good</option>
+      <option>Neutral</option>
+      <option>Chaotic Evil</option>
+    </select>
+    <button onclick="createProfile()">Forge Profile</button>
+
+    <div id="profile" class="profile-card" style="display: none;"></div>
+  </div>
+
+  <script>
+    function createProfile() {
+      const name = document.getElementById('name').value;
+      const race = document.getElementById('race').value;
+      const charClass = document.getElementById('class').value;
+      const alignment = document.getElementById('alignment').value;
+      const powerLevel = Math.floor(Math.random() * 100 + 1);
+
+      const profileHTML = `
+        <h2>${name}</h2>
+        <p><strong>Race:</strong> ${race}</p>
+        <p><strong>Class:</strong> ${charClass}</p>
+        <p><strong>Alignment:</strong> ${alignment}</p>
+        <p><strong>Power Level:</strong> ${powerLevel}</p>
+      `;
+
+      const profileDiv = document.getElementById('profile');
+      profileDiv.innerHTML = profileHTML;
+      profileDiv.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
